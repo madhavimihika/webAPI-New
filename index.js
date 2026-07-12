@@ -1,13 +1,9 @@
-const http = require('http');
+const express = require('express');
 
-const port = process.env.PORT;
+const app = express();
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', session: 'NB6007CEM S2' });
 });
 
-server.listen(port, () => {
-  console.log(`Server running at port : ${port}`);
-});
+app.listen(process.env.PORT || 3000);
